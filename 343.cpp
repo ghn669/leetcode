@@ -1,4 +1,8 @@
 //整数拆分
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
 class Solution {
 public:
     int integerBreak(int n) {
@@ -16,3 +20,9 @@ public:
         return dp[n];
     }
 };
+int main()
+{
+    Solution s;
+    cout<<s.integerBreak(10)<<endl;
+    return 0;
+}
