@@ -1,29 +1,16 @@
-//回文子串
 class Solution {
 public:
-    int countSubstrings(string s) {
-        vector<vector<bool>> dp(s.size(),vector<bool>(s.size(),false));
-        int res = 0;
-        int i,j;
-        for(int i=s.size()-1;i>=0;i--)
+    int findLengthOfLCIS(vector<int>& nums) {
+        int n = nums.size();
+        int res = 1;
+        vector<int> dp(n,1);
+        for(int i=1;i<n;i++)
         {
-            for(int j=i;j<s.size();j++)
+            if(nums[i-1]<nums[i])
             {
-                if(s[i]==s[j])
-                {
-                    if(j-i<=1)
-                    {
-                        dp[i][j]=true;
-                        res++;
-                        continue;
-                    }
-                    else if(dp[i+1][j-1]==true)
-                    {
-                        dp[i][j]=true;
-                        res++;
-                    }
-                }
+                dp[i]=dp[i-1]+1;
             }
+            res = max(res,dp[i]);
         }
         return res;
     }
